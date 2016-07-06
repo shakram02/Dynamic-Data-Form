@@ -1,4 +1,4 @@
-﻿namespace AutoBinder
+﻿namespace DynamicDataForm
 {
     public enum PropertyType
     {

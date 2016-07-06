@@ -1,7 +1,7 @@
-﻿<Application x:Class="AutoBinderSample.App"
+﻿<Application x:Class="DynamicDataFormSample.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:AutoBinderSample"
+             xmlns:local="clr-namespace:DynamicDataFormSample"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

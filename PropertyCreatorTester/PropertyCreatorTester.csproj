@@ -58,9 +58,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutoBinder\AutoBinder.csproj">
+    <ProjectReference Include="..\AutoBinder\DynamicDataForm.csproj">
       <Project>{fbe3dc59-5129-49b6-8d94-5e273beeadce}</Project>
-      <Name>AutoBinder</Name>
+      <Name>DynamicDataForm</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

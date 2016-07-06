@@ -1,11 +1,11 @@
-﻿using System;
+﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace AutoBinder
+namespace DynamicDataForm
 {
     internal class PropertyUserControl
     {
         public TextBlock NameTextBlock { get; set; }
-        public TextBox ValueTextBox { get; set; }
+        public FrameworkElement ValueRepresenter { get; set; }
     }
 }

@@ -1,6 +1,5 @@
-﻿using System;
-using System.Windows.Controls;
-using AutoBinder;
+﻿using System.Windows.Controls;
+using DynamicDataForm;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace PropertyCreatorTester

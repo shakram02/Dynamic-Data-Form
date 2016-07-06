@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Windows;
 using System.Windows.Controls;
 
-namespace AutoBinder
+namespace DynamicDataForm
 {
     public class PropertyCreator
     {
         private readonly Object _target;
-        private readonly Grid _objGrid;
+        private readonly StackPanel objStackPanel;
 
         private List<Type> SupportedTypes = new List<Type>
         {
@@ -18,17 +19,17 @@ namespace AutoBinder
 
         /// <summary>Creates a view for a given object</summary>
         /// <param name="target">Object that will be represented in the view</param>
-        /// <param name="objGrid">
+        /// <param name="objStackPanel">
         /// The grid that contains user controls representing the object's properties
         /// </param>
-        public PropertyCreator(Object target, Grid objGrid)
+        public PropertyCreator(Object target, StackPanel objStackPanel)
         {
             _target = target;
-            _objGrid = objGrid;
+            this.objStackPanel = objStackPanel;
             GenerateView();
         }
 
-        public PropertyCreator(Object target) : this(target, new Grid())
+        public PropertyCreator(Object target) : this(target, new StackPanel())
         {
 
         }
@@ -38,34 +39,33 @@ namespace AutoBinder
             // Read the properties of the new object Define the property types
             List<PropertyInfo> props = _target.GetType().GetProperties().Where(p => p.CanRead).ToList();
 
-            Grid propertyGrid = new Grid();
-            propertyGrid.ColumnDefinitions.Add(new ColumnDefinition());
-            propertyGrid.ColumnDefinitions.Add(new ColumnDefinition());
-
-            // 2 columns for a tabular view
-            _objGrid.ColumnDefinitions.Add(new ColumnDefinition());
-            _objGrid.ColumnDefinitions.Add(new ColumnDefinition());
-
             int propCount = 0;
             foreach (PropertyInfo prop in props)
             {
                 PropertyRepresentation pr = new PropertyRepresentation(prop, _target);
-                _objGrid.RowDefinitions.Add(new RowDefinition());
-                _objGrid.RowDefinitions.Add(new RowDefinition());
+
+                Grid propertyGrid = new Grid();
+                propertyGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                propertyGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                propertyGrid.Margin = new Thickness(5);
+
+                //_objGrid.RowDefinitions.Add(new RowDefinition());
                 var propertyUserControl = pr.GetUserControl();
 
                 Grid.SetColumn(propertyUserControl.NameTextBlock, 0);
-                Grid.SetColumn(propertyUserControl.ValueTextBox, 1);
+                Grid.SetColumn(propertyUserControl.ValueRepresenter, 1);
 
-                Grid.SetRow(propertyUserControl.NameTextBlock, propCount);
-                Grid.SetRow(propertyUserControl.ValueTextBox, propCount);
+                Grid.SetRow(propertyUserControl.NameTextBlock, 0);
+                Grid.SetRow(propertyUserControl.ValueRepresenter, 1);
 
-                _objGrid.Children.Add(propertyUserControl.NameTextBlock);
-                _objGrid.Children.Add(propertyUserControl.ValueTextBox);
-                propCount++;
+
+                propertyGrid.Children.Add(propertyUserControl.NameTextBlock);
+                propertyGrid.Children.Add(propertyUserControl.ValueRepresenter);
+
+                objStackPanel.Children.Add(propertyGrid);
             }
         }
 
-        public Grid ObjectGrid => _objGrid;
+        public StackPanel ObjectGrid => objStackPanel;
     }
 }

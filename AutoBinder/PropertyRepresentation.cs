@@ -2,9 +2,10 @@
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 
-namespace AutoBinder
+namespace DynamicDataForm
 {
     internal class PropertyRepresentation
     {
@@ -30,22 +31,42 @@ namespace AutoBinder
         {
             objecPanel.NameTextBlock = new TextBlock { Text = _property.Name };
 
-            TextBox textBox = new TextBox();
-
-            // The binding
-            var binding = new Binding
+            // TODO manage different properties Int32, Boolean, String TODO add support for generics
+            if (_property.PropertyType.Name == "Boolean")
             {
-                Source = _bindingSource,
-                Path = new PropertyPath(_property.Name),
-                Mode = BindingMode.TwoWay,  // Error two way binding requires Path or XPath
-                NotifyOnSourceUpdated = true,
-                NotifyOnTargetUpdated = true
-            };
+                CheckBox checkBox = new CheckBox();
 
-            // The target
-            textBox.SetBinding(TextBox.TextProperty, binding);
+                var binding = new Binding
+                {
+                    Source = _bindingSource,
+                    Path = new PropertyPath(_property.Name),
+                    Mode = BindingMode.TwoWay,  // Error two way binding requires Path or XPath
+                    NotifyOnSourceUpdated = true,
+                    NotifyOnTargetUpdated = true
+                };
+                // The target
+                checkBox.SetBinding(ToggleButton.IsCheckedProperty, binding);
 
-            objecPanel.ValueTextBox = textBox;
+                objecPanel.ValueRepresenter = checkBox;
+            }
+            else
+            {
+                TextBox textBox = new TextBox();
+                // The binding
+                var binding = new Binding
+                {
+                    Source = _bindingSource,
+                    Path = new PropertyPath(_property.Name),
+                    Mode = BindingMode.TwoWay,  // Error two way binding requires Path or XPath
+                    NotifyOnSourceUpdated = true,
+                    NotifyOnTargetUpdated = true
+                };
+
+                // The target
+                textBox.SetBinding(TextBox.TextProperty, binding);
+
+                objecPanel.ValueRepresenter = textBox;
+            }
 
             //else
             //{

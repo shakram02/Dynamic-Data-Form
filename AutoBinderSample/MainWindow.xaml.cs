@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace AutoBinderSample
+namespace DynamicDataFormSample
 {
 
     /// <summary>
@@ -40,7 +28,7 @@ namespace AutoBinderSample
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show($"Name:{SimpleObject.Name}, Number:{SimpleObject.Number}");
+            MessageBox.Show($"Name:{SimpleObject.Name}, Number:{SimpleObject.Number}, IsTrue:{SimpleObject.IsTrue}");
         }
     }
 
@@ -48,5 +36,6 @@ namespace AutoBinderSample
     {
         public string Name { get; set; } = "Simp";
         public int Number { get; set; } = 23;
+        public bool IsTrue { get; set; } = true;
     }
 }

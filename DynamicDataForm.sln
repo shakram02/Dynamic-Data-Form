@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoBinder", "AutoBinder\AutoBinder.csproj", "{FBE3DC59-5129-49B6-8D94-5E273BEEADCE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicDataForm", "AutoBinder\DynamicDataForm.csproj", "{FBE3DC59-5129-49B6-8D94-5E273BEEADCE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyCreatorTester", "PropertyCreatorTester\PropertyCreatorTester.csproj", "{C6B9188A-380C-43DF-86BD-A17138B516BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoBinderSample", "AutoBinderSample\AutoBinderSample.csproj", "{F25E5110-29AF-4A02-9F08-58AB8C658227}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicDataFormSample", "AutoBinderSample\DynamicDataFormSample.csproj", "{F25E5110-29AF-4A02-9F08-58AB8C658227}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace AutoBinder
+namespace DynamicDataForm
 {
     /// <summary>Interaction logic for UserControl1.xaml</summary>
     public partial class AutoBinder : UserControl
@@ -15,10 +15,10 @@ namespace AutoBinder
 
         private void DisplayPanel_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            PropertyCreator creator = new PropertyCreator(e.NewValue,MainGrid);
+            PropertyCreator creator = new PropertyCreator(e.NewValue,MainPanel);
 
             // Add each string to a label faced by a text box
-            MainGrid = creator.ObjectGrid;
+            MainPanel = creator.ObjectGrid;
         }
     }
 }
